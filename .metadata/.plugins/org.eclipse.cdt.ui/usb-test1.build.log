@@ -1,0 +1,16 @@
+13:40:51 **** Build of configuration Debug for project usb-test1 ****
+make -j4 all 
+arm-none-eabi-gcc -o "usb-test1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Work\projects\usb\usb-test1\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="usb-test1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: usb-test1.elf
+ 
+arm-none-eabi-size  usb-test1.elf 
+arm-none-eabi-objdump -h -S usb-test1.elf  > "usb-test1.list"
+   text	   data	    bss	    dec	    hex	filename
+  27860	    260	   9732	  37852	   93dc	usb-test1.elf
+Finished building: default.size.stdout
+ 
+Finished building: usb-test1.list
+ 
+
+13:40:54 Build Finished. 0 errors, 0 warnings. (took 2s.588ms)
+
