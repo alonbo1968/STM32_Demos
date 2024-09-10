@@ -59,8 +59,9 @@ dkms.conf
 settings/
 *.markers
 *launch
-*mk
 *index
 *cyclo
 *pdom
+*mk
+
 
