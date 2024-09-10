@@ -60,8 +60,8 @@ all: main-build
 main-build: uart-stlink.elf secondary-outputs
 
 # Tool invocations
-uart-stlink.elf uart-stlink.map: $(OBJS) $(USER_OBJS) C:\Work\projects\usb\uart-stlink\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "uart-stlink.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Work\projects\usb\uart-stlink\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="uart-stlink.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+uart-stlink.elf uart-stlink.map: $(OBJS) $(USER_OBJS) C:\Work\projects\USB\uart-stlink\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "uart-stlink.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Work\projects\USB\uart-stlink\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="uart-stlink.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
