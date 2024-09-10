@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+.metadata
+*.log
+*.xml
+*.list
+*.ini
+settings/
