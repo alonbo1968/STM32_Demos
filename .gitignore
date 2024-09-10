@@ -57,3 +57,4 @@ dkms.conf
 *.list
 *.ini
 settings/
+*.markers
