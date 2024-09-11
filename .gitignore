@@ -46,7 +46,7 @@
 # Kernel Module Compile Results
 *.mod*
 *.cmd
-.tmp_versions/
+tmp_versions/
 modules.order
 Module.symvers
 Mkfile.old
@@ -58,10 +58,8 @@ dkms.conf
 *.ini
 settings/
 *.markers
-*launch
-*index
-*cyclo
-*pdom
-*mk
-
-
+*.launch
+*.index
+*.cyclo
+*.pdom
+*.mk
