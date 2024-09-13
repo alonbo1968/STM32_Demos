@@ -71,6 +71,7 @@ const char tx_massege_0[] = "No entry. Try again. \r\n";
 const char tx_massege_1[] = "Menu 1 selected. \r\n";
 const char tx_massege_2[] = "Menu 2 selected. \r\n";
 const char tx_massege_3[] = "Wrong input! \r\n";
+char tx_massege_key[2];
 
 /* USER CODE END PV */
 
@@ -99,7 +100,7 @@ void no_entry(void) {
 void state_machine_execute(uint8_t new_state) {
 	new_state = new_state - '1';
 	if(new_state < STATE_MAX) {
-	(*state_machine_type[new_state].p_state_function)();
+	(state_machine_type[new_state].p_state_function)();
 	}
 	else {
 		(*state_machine_type[STATE_3].p_state_function)();
@@ -139,8 +140,9 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   const char init_message1[] = {"Tranmit/Receive data through STM32 UART routed to the ST-Link Virtual Comm: \r\n"};
+  HAL_UART_Transmit(&huart2, (uint8_t*)tx_massege_3, sizeof(tx_massege_3), 0xFFFF);
+  const char init_message2[] = {"\n   Enter menu number 1-2 : \r\n"};
   HAL_UART_Transmit(&huart2, (uint8_t*)init_message1, sizeof(init_message1), 0xFFFF);
-  const char init_message2[] = {"Enter menu number 1-2 : \r\n"};
   HAL_UART_Transmit(&huart2, (uint8_t*)init_message2, sizeof(init_message2), 0xFFFF);
 
   /* USER CODE END 2 */
@@ -150,10 +152,17 @@ int main(void)
   char rec_byte = 0;
   while (1)
   {
-	  HAL_UART_Receive(&huart2, (uint8_t*)&rec_byte, 1, 5000);
-	  if(rec_byte) {
-		  state_machine_execute(rec_byte);
-		  rec_byte = 0;
+	  if(HAL_UART_Receive(&huart2, (uint8_t*)&rec_byte, 1, 5000) == HAL_OK) {
+		  if(rec_byte) {
+			  tx_massege_key[0] = rec_byte;
+			  tx_massege_key[1] = '\n';
+			  HAL_UART_Transmit(&huart2, (uint8_t*)&tx_massege_key, sizeof(tx_massege_key), 0xFFFF);
+			  state_machine_execute(rec_byte);
+			  rec_byte = 0;
+		  }
+		  else {
+			  no_entry();
+		  }
 	  }
 	  else {
 		  no_entry();
