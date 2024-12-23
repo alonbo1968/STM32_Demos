@@ -84,17 +84,13 @@
 #define ADDR_FLASH_PAGE_62    ((uint32_t)0x0801F000) /* Base @ of Page 62, 2 Kbytes */
 #define ADDR_FLASH_PAGE_63    ((uint32_t)0x0801F800) /* Base @ of Page 63, 2 Kbytes */
 //
-#define FLASH_ADDRESS           ADDR_FLASH_PAGE_16   /* Start @ of user Flash area */
-#define DATA_64                 ((uint64_t)0x1234567890ABCDEF)
-
-
 
 /* Exported functions ------------------------------------------------------- */
 void FlashOperationInit(void);
 void FlashOperationDeInit(void);
 int8_t flash_example(void);
-HAL_StatusTypeDef FlashErasePage(void);
-HAL_StatusTypeDef FlashWritePage(void);
+HAL_StatusTypeDef FlashErasePage(uint32_t WriteAddress);
+HAL_StatusTypeDef FlashWritePage(uint32_t WriteAddress, uint64_t WriteWord);
 uint32_t FlashRead(uint32_t ReadAddress);
 
 

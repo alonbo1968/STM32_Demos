@@ -54,6 +54,8 @@ UART_HandleTypeDef huart2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+int8_t flash_example();
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
