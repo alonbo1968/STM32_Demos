@@ -54,7 +54,7 @@ UART_HandleTypeDef huart2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
-int8_t flash_example();
+int8_t flash_example(uint8_t write_flag);
 
 /* USER CODE BEGIN PFP */
 
@@ -97,7 +97,7 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
   /* Execute the example of storing data on the code Flash */
-  flash_example();
+  flash_example(0);
   /* USER CODE END 2 */
 
   /* Infinite loop */

@@ -88,7 +88,13 @@
 /* Exported functions ------------------------------------------------------- */
 void FlashOperationInit(void);
 void FlashOperationDeInit(void);
-int8_t flash_example(void);
+
+int8_t flash_write_and_read_example();
+int8_t flash_write_example(uint64_t WriteWord);
+uint64_t flash_read_example();
+void flash_example(uint8_t write_flag);
+
+
 HAL_StatusTypeDef FlashErasePage(uint32_t WriteAddress);
 HAL_StatusTypeDef FlashWritePage(uint32_t WriteAddress, uint64_t WriteWord);
 uint32_t FlashRead(uint32_t ReadAddress);
